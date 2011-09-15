@@ -1,7 +1,9 @@
-Torch5 Library.
-===============
+Torch7 raw C API
+================
 
-Torch5 provides a Matlab-like environment for state-of-the-art machine
-learning algorithms. It is easy to use and provides a very efficient
-implementation, thanks to an easy and fast scripting language (Lua) and a
-underlying C implementation.
+This package redistributes the raw C API of Torch7 
+(https://github.com/andresy/torch).
+
+This raw API provides a *generic* multi-dimensional array
+with support for CUDA, SSE2/3 and OpenMP.
+
