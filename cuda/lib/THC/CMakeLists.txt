@@ -1,0 +1,23 @@
+INCLUDE_DIRECTORIES("${Torch_SOURCE_DIR}/libraries/TH")
+
+SET(src 
+  THCGeneral.c THCStorage.c THCTensor.c THCTensorCopy.c)
+
+SET(src-cuda THC.cu)
+
+CUDA_ADD_LIBRARY(THC SHARED ${src} ${src-cuda})
+CUDA_ADD_CUBLAS_TO_TARGET(THC)
+TARGET_LINK_LIBRARIES(THC TH)
+
+INSTALL(TARGETS THC
+          RUNTIME DESTINATION "${Torch_INSTALL_BIN_SUBDIR}"
+          LIBRARY DESTINATION "${Torch_INSTALL_LIB_SUBDIR}"
+          ARCHIVE DESTINATION "${Torch_INSTALL_LIB_SUBDIR}")
+INSTALL(FILES
+        THCGeneral.h
+		THC.h
+		THCStorage.h
+		THCTensorConv.h
+		THCTensor.h
+		THCTensorMath.h
+        DESTINATION "${Torch_INSTALL_INCLUDE_SUBDIR}/THC")
